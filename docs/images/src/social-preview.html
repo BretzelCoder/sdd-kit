@@ -1,0 +1,108 @@
+<!doctype html>
+<!--
+  Source of docs/images/social-preview.png (1280 x 640 px, 2:1).
+  GitHub repository social preview: upload it in Settings > General > Social preview.
+  Edit the text below, then re-render: see docs/images/src/README.md.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SDD kit social preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@700&display=block" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f4ef;
+    --ink: #1c1f23;
+    --muted: #5f6368;
+    --line: #e0dbd0;
+    --teal: #13756b;
+    --gate: #d97a0b;
+    --dark: #1c1f23;
+    --mint: #67e3c9;
+    --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1280px; height: 640px; background: var(--bg); overflow: hidden; }
+  body {
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  .canvas {
+    width: 1280px; height: 640px;
+    padding: 64px 72px 0;
+    display: flex; flex-direction: column;
+    border-top: 14px solid var(--teal);
+  }
+  .eyebrow { color: var(--teal); font-weight: 700; font-size: 22px; letter-spacing: .17em; }
+  h1 { font-size: 80px; font-weight: 800; letter-spacing: -.035em; line-height: 1.05; margin-top: 14px; }
+  .subtitle { color: var(--muted); font-size: 29px; line-height: 1.35; margin-top: 16px; max-width: 1060px; }
+
+  .cycle { display: flex; align-items: center; gap: 9px; margin-top: 58px; }
+  .step {
+    font-family: var(--mono); font-weight: 700; font-size: 22px; color: var(--teal);
+    background: #fff; border: 2px solid var(--line); border-radius: 999px;
+    padding: 9px 15px; white-space: nowrap;
+  }
+  .step.optional { background: transparent; border: 2.5px dashed #c2baa9; }
+  .arrow { color: #a8a090; font-size: 24px; }
+  .diamond { width: 16px; height: 16px; transform: rotate(45deg); background: var(--gate); flex: none; margin: 0 3px; }
+  .diamond.hollow { background: var(--bg); border: 3px solid var(--gate); }
+  .legend { display: flex; align-items: center; gap: 10px; margin-top: 16px; color: var(--muted); font-size: 21px; }
+  .legend .diamond { width: 13px; height: 13px; margin: 0 2px 0 4px; }
+
+  footer {
+    margin-top: auto; margin-bottom: 40px; padding-top: 18px;
+    border-top: 2px solid var(--line);
+    display: flex; justify-content: space-between; font-size: 23px; color: var(--muted);
+  }
+  footer b { color: var(--ink); font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="eyebrow">SPEC-DRIVEN DEVELOPMENT · CLAUDE CODE</div>
+  <h1>The SDD kit</h1>
+  <p class="subtitle">A spec before every feature, three human gates, and a workflow that learns from every incident. Extracted from a real production project.</p>
+
+  <div class="cycle">
+    <span class="step optional">/brainstorm</span>
+    <span class="diamond hollow"></span>
+    <span class="step">/specify</span>
+    <span class="diamond"></span>
+    <span class="step">/plan</span>
+    <span class="diamond"></span>
+    <span class="step">/tasks</span>
+    <span class="arrow">→</span>
+    <span class="step">/implement</span>
+    <span class="arrow">→</span>
+    <span class="step">/review</span>
+    <span class="diamond"></span>
+  </div>
+  <div class="legend">
+    <span class="diamond"></span> human gate
+    <span class="diamond hollow"></span> optional
+  </div>
+
+  <footer>
+    <span><b>github.com/BretzelCoder/sdd-kit</b> · MIT licence</span>
+    <span>Jean-Luc Rominger</span>
+  </footer>
+</div>
+<script>
+  // Exposes the fit check for the render (see README.md in this folder).
+  document.fonts.ready.then(() => {
+    const c = document.querySelector('.canvas');
+    const row = document.querySelector('.cycle');
+    const f = document.querySelector('footer');
+    const legend = document.querySelector('.legend');
+    const fitsWidth = row.scrollWidth <= row.clientWidth && row.getBoundingClientRect().right <= 1280 - 72;
+    const fitsHeight = f.getBoundingClientRect().top - legend.getBoundingClientRect().bottom >= 20;
+    document.body.dataset.fits = String(fitsWidth && fitsHeight);
+    document.body.dataset.height = String(c.scrollHeight);
+  });
+</script>
+</body>
+</html>
