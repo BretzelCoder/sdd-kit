@@ -4,9 +4,12 @@ This kit is extracted from the workflow used on a real production project betwee
 
 ![How the workflow evolved from July to November 2026](docs/images/evolution.png)
 
-## Unreleased
+## 1.1.2 — 2026-11
 ### Added
 - Repository social preview (`docs/images/social-preview.png`, 1280 × 640 px), with its source in `docs/images/src/`.
+
+### Changed
+- Workflow visual says "commands" instead of "skills", like the README, the guide and `.claude/commands/`.
 
 ## 1.1.1 — 2026-11
 ### Changed

@@ -7,7 +7,7 @@ The kit is extracted from a real project (the "upstream") where the workflow kee
 | Field | Value |
 |---|---|
 | Upstream state used | 2026-11-14 |
-| Kit version | 1.1.1 |
+| Kit version | 1.1.2 |
 
 Update this table at every release.
 
