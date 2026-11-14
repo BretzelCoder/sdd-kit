@@ -6,8 +6,8 @@ The kit is extracted from a real project (the "upstream") where the workflow kee
 
 | Field | Value |
 |---|---|
-| Upstream state used | 2026-11-05 |
-| Kit version | 1.0.0 |
+| Upstream state used | 2026-11-14 |
+| Kit version | 1.1.0 |
 
 Update this table at every release.
 
@@ -42,7 +42,7 @@ When a change mixes both, port the generic principle and rewrite the example.
 
 ## 4. Release routine
 
-1. **Detect**: list the upstream commits that touched the tracked files since the last sync date.
+1. **Detect**: list the upstream commits that touched the tracked files since the last sync date, and cross-check the upstream journal entries marked "kit impact: yes".
 2. **Triage**: classify each one with the table in section 3.
 3. **Port**: rewrite in English, generic wording, no upstream names. Update `docs/GUIDE.md` if the behaviour changes, and the worked example if a template changes.
 4. **Check**: no upstream name or path left, internal links valid, commands consistent with the guide.

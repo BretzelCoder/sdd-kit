@@ -2,6 +2,16 @@
 
 This kit is extracted from the workflow used on a real production project between July and November 2026. The dates below are those of that project.
 
+## 1.1.0 — 2026-11
+### Added
+- `/brainstorm`: optional framing step before `/specify`, for topics that are still unclear. Entry test, one-question-at-a-time interview, current state backed by file:line evidence, two or three options including "do nothing", mandatory outcome (framing note, postpone or drop). No code, no spec, no branch.
+
+### Changed
+- `/specify` starts from an existing framing note and asks only its open questions.
+
+### How the workflow got there
+- **2026-11-14** — Optional framing step before `/specify`, after several specs were reworked because of unverified claims about existing behaviour.
+
 ## 1.0.0 — 2026-11 (first public version, MIT licence)
 Generic, English version of the workflow as of November 2026.
 

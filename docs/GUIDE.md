@@ -31,6 +31,7 @@ The commands are standard Claude Code slash commands: each `.md` file in `.claud
 
 | Step | You type | What you get | Your job |
 |---|---|---|---|
+| 0 (optional) | `/brainstorm import contacts from a CSV file` | Questions one at a time, verified current state, two or three options, then `docs/brainstorm/<slug>.md` | Choose: specify, postpone or drop |
 | 1 | `/specify export my contacts to CSV` | 3 to 6 questions, then `specs/NNN-slug/spec.md` | Answer, read the spec, approve or correct it |
 | 2 | `/plan` | `plan.md` with a traceability table | Check every requirement has an answer and nothing extra was added |
 | 3 | `/tasks` | `tasks.md` | Check the order and the definitions of done |
@@ -49,6 +50,7 @@ This is the process working, not failing. Read the proposed amendment, edit `spe
 
 | Rule | Problem it prevents |
 |---|---|
+| Optional framing before the spec | Specs reworked during implementation often rest on a claim about existing behaviour written from memory. Framing makes the current state verified, with evidence, before the spec is written. |
 | Questions before the spec | The agent fills ambiguity with plausible guesses. |
 | No technical decision in the spec | The spec becomes a disguised plan and nobody challenges the approach. |
 | Traceability table in the plan | Features grow beyond what was asked (scope creep). |
@@ -92,6 +94,8 @@ The method does not depend on Claude Code.
 **Isn't this waterfall again?** No. Waterfall freezes the spec for months. Here a spec covers one feature, takes minutes to amend, and amendments are expected: they are how gaps get resolved instead of being patched in the code.
 
 **Is it worth it for a one-line fix?** No. Use a `fix:` commit on a short branch. The full cycle is for features and anything that changes behaviour.
+
+**When should I use `/brainstorm`?** When the topic is still fuzzy: several possible solutions, a method or documents to analyse, a privacy or production stake. If you can already say what, for whom and what is out of scope, go straight to `/specify`.
 
 **How long does a cycle take?** It depends on the feature. The spec and plan validations are the part that needs you; `/implement` runs on its own.
 
