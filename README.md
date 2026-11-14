@@ -43,7 +43,7 @@ docs/continuous-improvement.md     # retrospective method, action register, jour
 specs/000-template/                # spec.md, plan.md and tasks.md templates
 examples/001-csv-export/           # a complete worked example: spec, plan, tasks
 docs/images/                       # the workflow and evolution visuals
-docs/images/src/                   # editable source of the workflow visual, with render instructions
+docs/images/src/                   # editable sources of the visuals, with render instructions
 CHANGELOG.md                       # how the workflow evolved
 MAINTAINING.md                     # how the kit is kept in sync with its source project
 LICENSE                            # MIT

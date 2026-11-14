@@ -2,12 +2,15 @@
 
 This kit is extracted from the workflow used on a real production project between July and November 2026. The dates below are those of that project.
 
+![How the workflow evolved from July to November 2026](docs/images/evolution.png)
+
 ## 1.1.1 — 2026-11
 ### Changed
 - Workflow visual (`docs/images/workflow.png`) shows the optional `/brainstorm` step: a dashed step 0 before `/specify`, and an optional human gate (specify, postpone or drop). The three mandatory human gates stay unchanged.
+- Evolution visual (`docs/images/evolution.png`): no more references to the source project (its name, spec and action numbers), as section 3 of `MAINTAINING.md` requires; new 14 November milestone for `/brainstorm`. The image now sits at the top of this changelog, since it covers every version.
 
 ### Added
-- Editable source of the workflow visual, with render instructions: `docs/images/src/`.
+- Editable sources of both visuals, with render instructions: `docs/images/src/`.
 
 ## 1.1.0 — 2026-11
 ### Added
@@ -23,9 +26,6 @@ This kit is extracted from the workflow used on a real production project betwee
 Generic, English version of the workflow as of November 2026.
 
 ### How the workflow got there
-
-![How the workflow evolved from July to November 2026](docs/images/evolution.png)
-
 - **2026-07-17** — Initial light kit: 5 slash commands, 6 rules. `/implement` did one task, then stopped for a go-ahead. Built on the same principle as GitHub Spec Kit, lighter.
 - **2026-08-14** — Tasks chained by default; one dedicated branch per spec; pull request and merge only on explicit request.
 - **2026-08-15 / 16** — Database backup before every `/implement` (T-00); scoped tests per task, full suite at the end of the spec.
