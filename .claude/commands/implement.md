@@ -7,7 +7,7 @@ Spec: $ARGUMENTS (otherwise, the most recent one with a tasks.md).
 1. T-00, always: back up the local database before any operation on it, even if tasks.md mentions no migration.
 2. By default, chain the unchecked tasks one after the other, without stopping between two tasks. For each task:
    - implement it with its tests;
-   - run lint, typecheck and the tests scoped to the changed files (`<your commands here>`): everything must be green;
+   - run lint, typecheck and the tests scoped to the changed files, with the commands listed under "Project commands" in CLAUDE.md: everything must be green;
    - tick the box in tasks.md;
    - commit `feat(NNN): T-XX description` (or fix/chore/test), then move on to the next task.
    Run the full test suite mid-way only if the task touches shared code where scoped tests may miss regressions.

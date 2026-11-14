@@ -1,0 +1,15 @@
+{
+  "name": "sdd-kit",
+  "displayName": "SDD kit",
+  "version": "1.2.0",
+  "description": "Spec-Driven Development workflow: /specify, /plan, /tasks, /implement, /review, plus an optional /brainstorm framing step. Run /sdd-kit:init once per project to add the rulebook and templates.",
+  "author": {
+    "name": "Jean-Luc Rominger",
+    "url": "https://github.com/BretzelCoder"
+  },
+  "homepage": "https://github.com/BretzelCoder/sdd-kit",
+  "repository": "https://github.com/BretzelCoder/sdd-kit",
+  "license": "MIT",
+  "keywords": ["spec-driven-development", "sdd", "workflow", "specification", "code-review"],
+  "commands": ["./.claude/commands/", "./plugin/commands/"]
+}

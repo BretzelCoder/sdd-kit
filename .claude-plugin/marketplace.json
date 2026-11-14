@@ -1,0 +1,15 @@
+{
+  "name": "bretzelcoder",
+  "description": "Plugins by BretzelCoder: the SDD kit, a Spec-Driven Development workflow for Claude Code.",
+  "owner": {
+    "name": "Jean-Luc Rominger",
+    "url": "https://github.com/BretzelCoder"
+  },
+  "plugins": [
+    {
+      "name": "sdd-kit",
+      "source": "./",
+      "description": "Spec-Driven Development workflow: five commands, an optional framing step, three human gates. Run /sdd-kit:init once per project."
+    }
+  ]
+}
