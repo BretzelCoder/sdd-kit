@@ -6,7 +6,7 @@ It comes from a real project: a production web app built in about 100 days, with
 
 ## The cycle
 
-![The SDD kit workflow: five commands, three human gates, CI guardrails and a retrospective after each session](docs/images/workflow.png)
+![The SDD kit workflow: an optional /brainstorm framing step, then five commands with three human gates, CI guardrails and a retrospective after each session](docs/images/workflow.png)
 
 ```
 (/brainstorm, optional) -> /specify -> human validation -> /plan -> human validation -> /tasks -> /implement -> /review
@@ -43,6 +43,7 @@ docs/continuous-improvement.md     # retrospective method, action register, jour
 specs/000-template/                # spec.md, plan.md and tasks.md templates
 examples/001-csv-export/           # a complete worked example: spec, plan, tasks
 docs/images/                       # the workflow and evolution visuals
+docs/images/src/                   # editable sources of the visuals, with render instructions
 CHANGELOG.md                       # how the workflow evolved
 MAINTAINING.md                     # how the kit is kept in sync with its source project
 LICENSE                            # MIT

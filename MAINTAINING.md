@@ -7,7 +7,7 @@ The kit is extracted from a real project (the "upstream") where the workflow kee
 | Field | Value |
 |---|---|
 | Upstream state used | 2026-11-14 |
-| Kit version | 1.1.0 |
+| Kit version | 1.1.1 |
 
 Update this table at every release.
 
@@ -44,8 +44,8 @@ When a change mixes both, port the generic principle and rewrite the example.
 
 1. **Detect**: list the upstream commits that touched the tracked files since the last sync date, and cross-check the upstream journal entries marked "kit impact: yes".
 2. **Triage**: classify each one with the table in section 3.
-3. **Port**: rewrite in English, generic wording, no upstream names. Update `docs/GUIDE.md` if the behaviour changes, and the worked example if a template changes.
-4. **Check**: no upstream name or path left, internal links valid, commands consistent with the guide.
-5. **Release**: bump the version (patch: wording; minor: new behaviour, step or template section; major: change to the cycle itself), add a CHANGELOG entry, update section 1 of this file.
+3. **Port**: rewrite in English, generic wording, no upstream names. Update `docs/GUIDE.md` if the behaviour changes, and the worked example if a template changes. If the cycle changes (a step, a gate, a command), update the visuals from their sources in `docs/images/src/` and re-render them (see the README in that folder): the workflow visual shows the cycle, the evolution visual gets a new dated milestone.
+4. **Check**: no upstream name or path left, internal links valid, commands consistent with the guide and with the visuals.
+5. **Release**: bump the version (patch: wording or visuals; minor: new behaviour, step or template section; major: change to the cycle itself), add a CHANGELOG entry, update section 1 of this file. Once merged, tag `vX.Y.Z` on main and publish a GitHub release whose notes come from the CHANGELOG entry.
 
 Suggested cadence: once a month, or right after an upstream change to the cycle itself.

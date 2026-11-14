@@ -1,0 +1,163 @@
+<!doctype html>
+<!--
+  Source of docs/images/evolution.png (1620 x 2025 px, 4:5).
+  Edit the text below, then re-render: see docs/images/src/README.md.
+  Kit rule (MAINTAINING.md, section 3): no upstream project name, spec number or action number here.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SDD kit evolution</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500&display=block" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f4ef;
+    --ink: #1c1f23;
+    --muted: #5f6368;
+    --line: #e0dbd0;
+    --rail: #cdc6b6;
+    --teal: #13756b;
+    --dark: #1c1f23;
+    --mint: #67e3c9;
+    --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1620px; height: 2025px; background: var(--bg); }
+  body {
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  code { font-family: var(--mono); font-size: .95em; }
+  .canvas {
+    width: 1620px; height: 2025px;
+    padding: 84px 102px 0;
+    display: flex; flex-direction: column;
+  }
+
+  /* Header */
+  .eyebrow { color: var(--teal); font-weight: 700; font-size: 30px; letter-spacing: .17em; }
+  h1 { font-size: 86px; font-weight: 800; letter-spacing: -.035em; line-height: 1.04; margin-top: 16px; }
+  .subtitle { color: var(--muted); font-size: 35px; margin-top: 14px; }
+
+  /* Version 1 card */
+  .v1 {
+    margin-top: 34px; background: #fff; border: 2px solid var(--line); border-radius: 24px;
+    padding: 26px 38px 28px;
+  }
+  .v1 .kicker { color: var(--muted); font-weight: 700; font-size: 27px; letter-spacing: .06em; }
+  .v1 h2 { font-size: 39px; font-weight: 700; margin-top: 6px; }
+  .v1 p { font-size: 29px; line-height: 1.42; margin-top: 8px; }
+  .v1 .note { color: var(--muted); font-size: 24px; margin-top: 10px; }
+  .v1 .note b { color: var(--ink); }
+
+  /* Timeline */
+  .timeline { margin-top: 36px; }
+  .item { display: grid; grid-template-columns: 52px 1fr; column-gap: 14px; }
+  .rail { position: relative; }
+  .rail::before {
+    content: ""; position: absolute; left: 50%; top: 0; bottom: 0;
+    width: 5px; transform: translateX(-50%); background: var(--rail);
+  }
+  .item:first-child .rail::before { top: 36px; }
+  .item:last-child .rail::before { bottom: auto; height: 36px; }
+  .dot {
+    position: absolute; left: 50%; top: 16px; transform: translateX(-50%);
+    width: 40px; height: 40px; border-radius: 50%; z-index: 1;
+    background: var(--teal);
+  }
+  .dot.minor { background: var(--bg); border: 5px solid var(--teal); }
+  .text { padding: 6px 0 24px; }
+  .date { color: var(--teal); font-weight: 700; font-size: 27px; }
+  .what { font-size: 31px; line-height: 1.3; margin-top: 2px; }
+
+  /* Today */
+  .today {
+    margin-top: 24px; background: var(--dark); color: #fff; border-radius: 24px;
+    padding: 26px 36px; font-size: 31px; line-height: 1.42;
+  }
+  .today b { color: var(--mint); }
+
+  footer {
+    margin-top: auto; margin-bottom: 72px; padding-top: 22px;
+    border-top: 2px solid var(--line);
+    display: flex; justify-content: space-between; font-size: 30px; color: var(--muted);
+  }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="eyebrow">SPEC-DRIVEN DEVELOPMENT · CLAUDE CODE</div>
+  <h1>From a light kit to a<br>self-improving workflow</h1>
+  <p class="subtitle">How the process evolved, July to November 2026</p>
+
+  <div class="v1">
+    <div class="kicker">17 JUL 2026 · VERSION 1</div>
+    <h2>A deliberately light kit</h2>
+    <p>5 slash commands, 6 rules, a 47-line CLAUDE.md. <code>/implement</code> did one task, then stopped for a human go-ahead.</p>
+    <p class="note">Built on the same principle as <b>GitHub Spec Kit</b> (github.com/github/spec-kit), lighter and in French.</p>
+  </div>
+
+  <!-- Filled dot = change to the cycle itself; hollow dot = refinement. -->
+  <div class="timeline">
+    <div class="item"><div class="rail"><span class="dot"></span></div><div class="text">
+      <div class="date">14 Aug</div>
+      <div class="what">Tasks chained by default, one dedicated branch per spec, merge only on explicit request</div>
+    </div></div>
+    <div class="item"><div class="rail"><span class="dot minor"></span></div><div class="text">
+      <div class="date">15–16 Aug</div>
+      <div class="what">Database backup before every <code>/implement</code>, scoped tests per task, full suite at the end</div>
+    </div></div>
+    <div class="item"><div class="rail"><span class="dot minor"></span></div><div class="text">
+      <div class="date">27 Aug</div>
+      <div class="what">Isolated git worktree only when a concurrent session is a real risk</div>
+    </div></div>
+    <div class="item"><div class="rail"><span class="dot"></span></div><div class="text">
+      <div class="date">8 Sep</div>
+      <div class="what">CI/CD on GitHub Actions: rules start becoming automated checks</div>
+    </div></div>
+    <div class="item"><div class="rail"><span class="dot minor"></span></div><div class="text">
+      <div class="date">15 Oct</div>
+      <div class="what">Spec lifecycle, DRAFT to CLOSED, verified in CI</div>
+    </div></div>
+    <div class="item"><div class="rail"><span class="dot"></span></div><div class="text">
+      <div class="date">16 Oct</div>
+      <div class="what">Retrospective after every session, and <code>/review</code> split into parallel read-only agents</div>
+    </div></div>
+    <div class="item"><div class="rail"><span class="dot minor"></span></div><div class="text">
+      <div class="date">21 Oct</div>
+      <div class="what">A process rule born from the action register</div>
+    </div></div>
+    <div class="item"><div class="rail"><span class="dot minor"></span></div><div class="text">
+      <div class="date">28 Oct</div>
+      <div class="what">Rulebook streamlined, every rule traced to the spec that created it</div>
+    </div></div>
+    <div class="item"><div class="rail"><span class="dot"></span></div><div class="text">
+      <div class="date">14 Nov</div>
+      <div class="what">Optional <code>/brainstorm</code> framing step: current state verified before any spec</div>
+    </div></div>
+  </div>
+
+  <div class="today">
+    <b>Today:</b> the same 5 commands plus an optional framing step. The rules behind them came from 103 specs, and the CLAUDE.md grew from 47 to 112 lines.
+  </div>
+
+  <footer>
+    <span>Source: git history of the project the kit comes from</span>
+    <span>Jean-Luc Rominger</span>
+  </footer>
+</div>
+<script>
+  // Exposes the content height for the render check (see README.md in this folder).
+  document.fonts.ready.then(() => {
+    const c = document.querySelector('.canvas');
+    const f = document.querySelector('footer');
+    const last = document.querySelector('.today');
+    document.body.dataset.fits = String(f.getBoundingClientRect().top - last.getBoundingClientRect().bottom >= 20);
+    document.body.dataset.height = String(c.scrollHeight);
+  });
+</script>
+</body>
+</html>
