@@ -9,7 +9,7 @@
 ## Spec-Driven Development workflow — STRICT RULES
 
 1. **Never code without an approved spec.** Every feature starts with `/specify`.
-2. Full cycle: `/specify` → human validation → `/plan` → human validation → `/tasks` → `/implement` (chained by default, see rule 4) → `/review`.
+2. Full cycle: (`/brainstorm`, optional) → `/specify` → human validation → `/plan` → human validation → `/tasks` → `/implement` (chained by default, see rule 4) → `/review`.
 3. A spec lives in `specs/NNN-slug/` (spec.md, plan.md, tasks.md). NNN = sequential number. **Each spec is developed on a dedicated branch** `NNN-slug`, created from an up-to-date main. No feature code ever committed directly on main.
 4. During `/implement`: chain the unchecked tasks of tasks.md (lint + typecheck + scoped tests green after each task, full suite once at the end, box ticked, then commit) without stopping between tasks. Stop only: (a) at the end of tasks.md, (b) on a gap with the spec (rule 5), (c) if the user explicitly asks for task-by-task control.
 5. Any gap discovered during implementation = back to the spec (amend it), no improvisation in the code.

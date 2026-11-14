@@ -1,6 +1,6 @@
 # SDD kit for Claude Code
 
-A Spec-Driven Development (SDD) workflow for building software with Claude Code: five slash commands, a constitution, a spec template and a continuous-improvement ritual.
+A Spec-Driven Development (SDD) workflow for building software with Claude Code: five slash commands plus an optional framing step, a constitution, a spec template and a continuous-improvement ritual.
 
 It comes from a real project: a production web app built in about 100 days, with over 100 specs, roughly one line of specification per line of code, and around 6,000 automated tests. This kit is the process, stripped of anything project-specific.
 
@@ -9,11 +9,12 @@ It comes from a real project: a production web app built in about 100 days, with
 ![The SDD kit workflow: five commands, three human gates, CI guardrails and a retrospective after each session](docs/images/workflow.png)
 
 ```
-/specify -> human validation -> /plan -> human validation -> /tasks -> /implement -> /review
+(/brainstorm, optional) -> /specify -> human validation -> /plan -> human validation -> /tasks -> /implement -> /review
 ```
 
 | Step | What Claude does | What the human does |
 |---|---|---|
+| `/brainstorm` (optional) | Frames a still-unclear topic: questions one at a time, current state backed by evidence, two or three options including "do nothing". Writes no code and no spec. | Chooses: specify, postpone or drop. |
 | `/specify` | Asks 3 to 6 questions, then writes WHAT and WHY only, with testable acceptance criteria. Unclear points stay `[TO CLARIFY]`. | Answers, then approves the spec. |
 | `/plan` | Re-reads the constitution and ADRs, writes the technical plan, traces each choice to a requirement. Refuses to start while `[TO CLARIFY]` remains. | Approves the plan. |
 | `/tasks` | Splits the plan into tasks under 1 hour, each testable, tests written with the code. | Approves the list. |
@@ -32,7 +33,7 @@ It comes from a real project: a production web app built in about 100 days, with
 
 ```
 CLAUDE.md                          # rulebook read by the agent at every session: fill in the <placeholders>
-.claude/commands/                  # the five slash commands: /specify /plan /tasks /implement /review
+.claude/commands/                  # the five slash commands /specify /plan /tasks /implement /review, plus the optional /brainstorm
 .claude/agents/review-axis.md      # read-only reviewer used by /review in parallel mode
 .claude/settings.example.json      # safe default permissions (rename to settings.json)
 docs/GUIDE.md                      # full user guide: setup, daily use, why each rule exists, FAQ
