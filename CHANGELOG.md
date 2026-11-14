@@ -4,6 +4,10 @@ This kit is extracted from the workflow used on a real production project betwee
 
 ![How the workflow evolved from July to November 2026](docs/images/evolution.png)
 
+## Unreleased
+### Added
+- Repository social preview (`docs/images/social-preview.png`, 1280 × 640 px), with its source in `docs/images/src/`.
+
 ## 1.1.1 — 2026-11
 ### Changed
 - Workflow visual (`docs/images/workflow.png`) shows the optional `/brainstorm` step: a dashed step 0 before `/specify`, and an optional human gate (specify, postpone or drop). The three mandatory human gates stay unchanged.
