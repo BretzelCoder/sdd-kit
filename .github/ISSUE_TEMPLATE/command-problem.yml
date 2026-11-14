@@ -1,0 +1,40 @@
+name: Problem with a command
+description: A command misbehaves, or two documents contradict each other.
+title: "[Problem] "
+labels: ["bug"]
+body:
+  - type: dropdown
+    id: command
+    attributes:
+      label: Command or file
+      options:
+        - /brainstorm
+        - /specify
+        - /plan
+        - /tasks
+        - /implement
+        - /review
+        - /sdd-kit:init (plugin)
+        - CLAUDE.md or a template
+        - Documentation
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: What happened
+      description: Paste the relevant part of the agent's answer if it helps. Remove any private data first.
+    validations:
+      required: true
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: Kit version (see CHANGELOG.md or /plugin), agent and its version.
+      placeholder: "Kit 1.2.0, Claude Code 2.1.x"
