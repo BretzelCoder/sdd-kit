@@ -2,6 +2,13 @@
 
 This kit is extracted from the workflow used on a real production project between July and November 2026. The dates below are those of that project.
 
+## 1.1.1 — 2026-11
+### Changed
+- Workflow visual (`docs/images/workflow.png`) shows the optional `/brainstorm` step: a dashed step 0 before `/specify`, and an optional human gate (specify, postpone or drop). The three mandatory human gates stay unchanged.
+
+### Added
+- Editable source of the workflow visual, with render instructions: `docs/images/src/`.
+
 ## 1.1.0 — 2026-11
 ### Added
 - `/brainstorm`: optional framing step before `/specify`, for topics that are still unclear. Entry test, one-question-at-a-time interview, current state backed by file:line evidence, two or three options including "do nothing", mandatory outcome (framing note, postpone or drop). No code, no spec, no branch.
