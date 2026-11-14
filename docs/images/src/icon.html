@@ -1,0 +1,41 @@
+<!doctype html>
+<!--
+  Source of .claude-plugin/icon.png (512 x 512 px), the plugin's listing icon.
+  Re-render: see docs/images/src/README.md.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SDD kit icon</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@800&display=block" rel="stylesheet">
+<style>
+  :root { --teal: #13756b; --gate: #f0a03c; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 512px; height: 512px; background: var(--teal); overflow: hidden; }
+  .canvas {
+    width: 512px; height: 512px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 34px;
+    font-family: Inter, "Segoe UI", Arial, sans-serif; color: #fff;
+  }
+  .word { font-size: 168px; font-weight: 800; letter-spacing: -.04em; line-height: 1; }
+  /* Three diamonds: the three human gates. */
+  .gates { display: flex; gap: 40px; }
+  .gates span { width: 34px; height: 34px; background: var(--gate); transform: rotate(45deg); }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="word">SDD</div>
+  <div class="gates"><span></span><span></span><span></span></div>
+</div>
+<script>
+  document.fonts.ready.then(() => {
+    const w = document.querySelector('.word').getBoundingClientRect();
+    document.body.dataset.fits = String(w.left >= 32 && w.right <= 480);
+    document.body.dataset.height = String(document.querySelector('.canvas').scrollHeight);
+  });
+</script>
+</body>
+</html>

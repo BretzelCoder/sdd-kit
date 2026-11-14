@@ -1,0 +1,38 @@
+name: Port to another agent
+description: Adapt the kit to Cursor, Codex, Copilot, Gemini CLI or another coding agent.
+title: "[Port] "
+labels: ["agent-port"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The method is tool-agnostic (see section 7 of docs/GUIDE.md). A port maps each piece of the kit to what the other agent offers.
+  - type: input
+    id: agent
+    attributes:
+      label: Agent
+      placeholder: "Cursor 1.x"
+    validations:
+      required: true
+  - type: textarea
+    id: mapping
+    attributes:
+      label: Mapping
+      description: Where the rulebook, the commands and the read-only reviewer go in that agent.
+      placeholder: |
+        CLAUDE.md -> AGENTS.md
+        .claude/commands/*.md -> ...
+        review-axis agent -> ...
+    validations:
+      required: true
+  - type: textarea
+    id: gaps
+    attributes:
+      label: What does not translate
+      description: Features the other agent lacks (sub-agents, permissions, hooks…) and your workaround.
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: Contribution
+      options:
+        - label: I can open a pull request with the port.

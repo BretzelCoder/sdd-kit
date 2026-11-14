@@ -1,0 +1,24 @@
+name: Kit checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # The plugin loads its agent from agents/, people who copy the kit use .claude/agents/.
+      - name: Plugin agent is identical to the kit agent
+        run: cmp .claude/agents/review-axis.md agents/review-axis.md
+
+      # plugin.json pins the version users get: it must move with every release.
+      - name: Plugin version matches the latest CHANGELOG entry
+        run: |
+          plugin=$(sed -n 's/.*"version": *"\([^"]*\)".*/\1/p' .claude-plugin/plugin.json)
+          changelog=$(sed -n 's/^## \([0-9][0-9.]*\) .*/\1/p' CHANGELOG.md | head -1)
+          echo "plugin.json: $plugin / CHANGELOG: $changelog"
+          test -n "$plugin" && test "$plugin" = "$changelog"

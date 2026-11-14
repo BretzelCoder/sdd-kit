@@ -35,6 +35,9 @@ It comes from a real project: a production web app built in about 100 days, with
 CLAUDE.md                          # rulebook read by the agent at every session: fill in the <placeholders>
 .claude/commands/                  # the five slash commands /specify /plan /tasks /implement /review, plus the optional /brainstorm
 .claude/agents/review-axis.md      # read-only reviewer used by /review in parallel mode
+.claude-plugin/                    # plugin manifest, marketplace file and icon: the repository installs as a Claude Code plugin
+plugin/commands/init.md            # /sdd-kit:init, plugin only: adds the rulebook, docs and templates to a project
+agents/review-axis.md              # the plugin's copy of the reviewer, kept identical by CI
 .claude/settings.example.json      # safe default permissions (rename to settings.json)
 docs/GUIDE.md                      # full user guide: setup, daily use, why each rule exists, FAQ
 docs/constitution.md               # non-negotiable principles
@@ -46,14 +49,36 @@ docs/images/                       # the workflow and evolution visuals, and the
 docs/images/src/                   # editable sources of the visuals, with render instructions
 CHANGELOG.md                       # how the workflow evolved
 MAINTAINING.md                     # how the kit is kept in sync with its source project
+CONTRIBUTING.md                    # how to contribute: experience reports, ports, rule proposals
+.github/                           # issue forms, pull request template, Kit checks workflow
 LICENSE                            # MIT
 ```
 
 ## Quick start
 
+### As a Claude Code plugin (recommended)
+
+In Claude Code:
+
+```
+/plugin install sdd-kit --marketplace BretzelCoder/sdd-kit
+```
+
+This one-step form needs Claude Code 2.1.275 or later. On an older version, run `/plugin marketplace add BretzelCoder/sdd-kit`, then `/plugin install sdd-kit@bretzelcoder`.
+
+Then, in your project:
+
+1. Run `/sdd-kit:init`. It copies `CLAUDE.md`, the constitution, the ADR and continuous-improvement documents and the spec templates into your project, without overwriting anything.
+2. Fill in the `<placeholders>` in `CLAUDE.md`.
+3. Run `/sdd-kit:specify <your first feature>`.
+
+With the plugin, every command has the `sdd-kit:` prefix: `/sdd-kit:plan`, `/sdd-kit:implement`, and so on. The plugin updates with each kit release.
+
+### By copying the files
+
 1. Copy the kit into the root of your repository.
 2. Rename `.claude/settings.example.json` to `.claude/settings.json`.
-3. Fill in the `<placeholders>` in `CLAUDE.md` and in `.claude/commands/implement.md`.
+3. Fill in the `<placeholders>` in `CLAUDE.md`.
 4. Run `/specify <your first feature>` in Claude Code.
 
 Step-by-step instructions are in [docs/GUIDE.md](docs/GUIDE.md). For the expected level of detail, read [the worked example](examples/001-csv-export/spec.md).
@@ -65,6 +90,10 @@ Using another coding agent? The method is tool-agnostic: see section 7 of the gu
 - Start light. The rules in a mature CLAUDE.md come from incidents; let yours grow the same way.
 - Keep the two human validations. They are what keeps speed from turning into drift.
 - Reduce the human-in-the-loop only as fast as your automated checks allow.
+
+## Contributing
+
+Used the kit on a project? An [experience report](https://github.com/BretzelCoder/sdd-kit/issues/new/choose) is the most useful contribution: every rule in the kit came from an incident, and yours are how the next ones get found. Ports to other agents and rule proposals are welcome too. See [CONTRIBUTING.md](CONTRIBUTING.md), and ask questions in [Discussions](https://github.com/BretzelCoder/sdd-kit/discussions).
 
 ## Maintenance
 

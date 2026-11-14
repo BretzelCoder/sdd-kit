@@ -1,0 +1,43 @@
+name: Experience report
+description: Tell how the kit went on your project. The most useful contribution.
+title: "[Experience] "
+labels: ["experience-report"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you. Every rule in the kit came from an incident, so what happened on your project is how the next rules get found.
+        Please leave out private data: company, product, people or customer names.
+  - type: textarea
+    id: context
+    attributes:
+      label: Context
+      description: Kind of project, team size, stack, and how long you have used the kit.
+      placeholder: "A B2B web app, 2 developers, TypeScript and PostgreSQL, 6 weeks with the kit."
+    validations:
+      required: true
+  - type: textarea
+    id: worked
+    attributes:
+      label: What worked
+      description: Which steps or rules made a real difference, and how you noticed.
+  - type: textarea
+    id: friction
+    attributes:
+      label: What got in the way
+      description: Steps you skipped, rules you bent, incidents the kit did not prevent.
+    validations:
+      required: true
+  - type: textarea
+    id: changes
+    attributes:
+      label: What you changed
+      description: Rules you added, removed or rewrote in your own CLAUDE.md, and why.
+  - type: dropdown
+    id: install
+    attributes:
+      label: How you installed the kit
+      options:
+        - Plugin (/plugin install)
+        - Copied the files into my repository
+        - Adapted to another agent

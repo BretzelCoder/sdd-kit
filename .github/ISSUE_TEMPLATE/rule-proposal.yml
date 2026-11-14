@@ -1,0 +1,35 @@
+name: Rule proposal
+description: Suggest a new rule, gate or template section, born from something that happened.
+title: "[Rule] "
+labels: ["rule-proposal"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        The kit stays light on purpose: every rule in it comes from an incident. Before proposing one, check the triage in MAINTAINING.md, section 3.
+  - type: textarea
+    id: incident
+    attributes:
+      label: The incident
+      description: What happened, and what it cost. Leave out private names.
+    validations:
+      required: true
+  - type: textarea
+    id: rule
+    attributes:
+      label: The rule you propose
+      description: One or two sentences, worded as it would appear in CLAUDE.md or in a command.
+    validations:
+      required: true
+  - type: textarea
+    id: generic
+    attributes:
+      label: Why it is generic
+      description: Why a team with a different product and stack would benefit from it.
+    validations:
+      required: true
+  - type: textarea
+    id: guardrail
+    attributes:
+      label: Automated check
+      description: Could CI enforce it? How?

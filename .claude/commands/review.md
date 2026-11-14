@@ -12,7 +12,7 @@ Spec: $ARGUMENTS (otherwise, the most recent one).
    - **axis A, schema and security**;
    - **axis B, fields and data**;
    - **axis C, interface and documentation**.
-   In parallel mode, launch in a single message one `review-axis` sub-agent per axis (read-only), each given only the spec, the plan, the diff file and its axis. Do steps 1 and 2 while they work.
+   In parallel mode, launch in a single message one `review-axis` sub-agent per axis (`sdd-kit:review-axis` when the kit is installed as a plugin; read-only), each given only the spec, the plan, the diff file and its axis. Do steps 1 and 2 while they work.
 4. Consolidate: re-check every reported gap at its file:line before keeping it. An unconfirmed report is dropped, and said so.
 5. Verdict: COMPLIANT / GAPS (precise list, with file:line).
 6. Fix nothing without my approval.
