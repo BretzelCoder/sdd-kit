@@ -1,0 +1,271 @@
+<!doctype html>
+<!--
+  Source of docs/images/workflow.png (1620 x 2025 px, 4:5).
+  Edit the text below, then re-render: see docs/images/src/README.md.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SDD kit workflow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@700&display=block" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f5f4ef;
+    --ink: #1c1f23;
+    --muted: #5f6368;
+    --line: #e0dbd0;
+    --teal: #13756b;
+    --teal-ink: #145a52;
+    --chip: #eaf2ef;
+    --gate: #d97a0b;
+    --gate-ink: #9c4a0c;
+    --dark: #1c1f23;
+    --mint: #67e3c9;
+    --ci-bg: #e5e9f0;
+    --ci-ink: #2541a6;
+    --retro-bg: #fbecd8;
+    --retro-ink: #96470d;
+    --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1620px; height: 2025px; background: var(--bg); }
+  body {
+    font-family: Inter, "Segoe UI", Arial, sans-serif;
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+  }
+  .canvas {
+    width: 1620px; height: 2025px;
+    padding: 84px 102px 0;
+    display: flex; flex-direction: column;
+  }
+
+  /* Header */
+  .eyebrow { color: var(--teal); font-weight: 700; font-size: 30px; letter-spacing: .17em; }
+  h1 { font-size: 86px; font-weight: 800; letter-spacing: -.035em; line-height: 1.05; margin-top: 16px; }
+  .subtitle { color: var(--muted); font-size: 35px; margin-top: 10px; }
+  .band {
+    margin-top: 28px; background: var(--dark); color: #fff;
+    border-radius: 24px; padding: 18px 38px; font-size: 32px;
+  }
+  .band b { color: var(--mint); font-weight: 600; }
+
+  /* Timeline */
+  .timeline { margin-top: 22px; }
+  .row { display: grid; grid-template-columns: 58px 1fr; column-gap: 28px; }
+  .rail { position: relative; }
+  .rail::before {
+    content: ""; position: absolute; left: 50%; top: 0; bottom: 0;
+    width: 5px; transform: translateX(-50%); background: var(--teal);
+  }
+  .rail.dashed::before {
+    background: repeating-linear-gradient(to bottom, var(--teal) 0 12px, transparent 12px 22px);
+  }
+  .rail.start::before { top: 52px; }
+  .rail.end::before { bottom: auto; height: 50%; }
+
+  .num {
+    position: absolute; left: 50%; top: 22px; transform: translateX(-50%);
+    width: 58px; height: 58px; border-radius: 50%;
+    background: var(--teal); color: #fff; font-weight: 700; font-size: 28px;
+    display: flex; align-items: center; justify-content: center; z-index: 1;
+  }
+  .num.hollow { background: var(--bg); color: var(--teal); border: 4px solid var(--teal); }
+
+  .card-wrap { padding: 7px 0; }
+  .card {
+    background: #fff; border: 2px solid var(--line); border-radius: 22px;
+    padding: 18px 32px 20px 34px;
+    display: grid; grid-template-columns: 318px 1fr; column-gap: 0;
+  }
+  .card.optional { background: transparent; border: 3px dashed #c9c2b3; }
+  .cmd { font-family: var(--mono); color: var(--teal); font-size: 44px; font-weight: 700; line-height: 1.15; }
+  .tag {
+    display: inline-block; margin-top: 6px; padding: 2px 14px;
+    border: 2px solid var(--teal); border-radius: 999px;
+    color: var(--teal); font-size: 22px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+  }
+  .what { font-size: 33px; font-weight: 600; line-height: 1.3; padding-top: 3px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px 12px; margin-top: 10px; }
+  .chip {
+    background: var(--chip); color: var(--teal-ink);
+    font-size: 26px; padding: 4px 18px; border-radius: 999px; white-space: nowrap;
+  }
+
+  .gate { display: flex; align-items: center; height: 50px; color: var(--gate-ink); font-weight: 600; font-size: 29px; }
+  .gate .note { color: var(--muted); font-weight: 400; font-size: 26px; margin-left: 12px; }
+  .diamond {
+    position: absolute; left: 50%; top: 50%;
+    width: 28px; height: 28px; transform: translate(-50%, -50%) rotate(45deg);
+    background: var(--gate); z-index: 1;
+  }
+  .diamond.hollow { background: var(--bg); border: 4px solid var(--gate); }
+
+  /* Bottom */
+  .boxes { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 18px; }
+  .box { border-radius: 24px; padding: 22px 32px 24px; font-size: 28px; line-height: 1.36; }
+  .box h2 { font-size: 31px; font-weight: 700; margin-bottom: 8px; }
+  .box.ci { background: var(--ci-bg); }
+  .box.ci h2 { color: var(--ci-ink); }
+  .box.retro { background: var(--retro-bg); }
+  .box.retro h2 { color: var(--retro-ink); }
+  .loop { text-align: center; color: var(--muted); font-size: 27px; margin-top: 14px; }
+
+  footer {
+    margin-top: auto; margin-bottom: 72px; padding-top: 22px;
+    border-top: 2px solid var(--line);
+    display: flex; justify-content: space-between; font-size: 30px; color: var(--muted);
+  }
+  footer b { color: var(--ink); font-weight: 700; }
+</style>
+</head>
+<body>
+<div class="canvas">
+  <div class="eyebrow">SPEC-DRIVEN DEVELOPMENT · CLAUDE CODE</div>
+  <h1>The SDD kit workflow</h1>
+  <p class="subtitle">One feature at a time. Five skills, an optional framing step, three human gates.</p>
+  <div class="band">Read before every step: <b>Constitution</b> (8 principles) · <b>ADRs</b> · <b>CLAUDE.md</b> rulebook</div>
+
+  <div class="timeline">
+    <!-- 0 · optional framing -->
+    <div class="row">
+      <div class="rail dashed start"><span class="num hollow">0</span></div>
+      <div class="card-wrap"><div class="card optional">
+        <div><div class="cmd">/brainstorm</div><span class="tag">optional</span></div>
+        <div>
+          <div class="what">Frames an unclear topic before any spec</div>
+          <div class="chips">
+            <span class="chip">one question at a time</span>
+            <span class="chip">evidence with file:line</span>
+            <span class="chip">"do nothing" option</span>
+          </div>
+        </div>
+      </div></div>
+    </div>
+    <div class="row">
+      <div class="rail dashed"><span class="diamond hollow"></span></div>
+      <div class="gate">Human chooses: specify · postpone · drop<span class="note">(optional gate)</span></div>
+    </div>
+
+    <!-- 1 -->
+    <div class="row">
+      <div class="rail"><span class="num">1</span></div>
+      <div class="card-wrap"><div class="card">
+        <div class="cmd">/specify</div>
+        <div>
+          <div class="what">Asks 3 to 6 questions, then writes WHAT &amp; WHY</div>
+          <div class="chips">
+            <span class="chip">testable acceptance criteria</span>
+            <span class="chip">explicit out of scope</span>
+            <span class="chip">[TO CLARIFY]</span>
+          </div>
+        </div>
+      </div></div>
+    </div>
+    <div class="row">
+      <div class="rail"><span class="diamond"></span></div>
+      <div class="gate">Human validates the spec</div>
+    </div>
+
+    <!-- 2 -->
+    <div class="row">
+      <div class="rail"><span class="num">2</span></div>
+      <div class="card-wrap"><div class="card">
+        <div class="cmd">/plan</div>
+        <div>
+          <div class="what">Traces every technical choice to a requirement</div>
+          <div class="chips">
+            <span class="chip">blocked while [TO CLARIFY] remains</span>
+            <span class="chip">never contradicts an ADR</span>
+          </div>
+        </div>
+      </div></div>
+    </div>
+    <div class="row">
+      <div class="rail"><span class="diamond"></span></div>
+      <div class="gate">Human validates the plan</div>
+    </div>
+
+    <!-- 3 -->
+    <div class="row">
+      <div class="rail"><span class="num">3</span></div>
+      <div class="card-wrap"><div class="card">
+        <div class="cmd">/tasks</div>
+        <div>
+          <div class="what">Atomic tasks, under 1 hour each</div>
+          <div class="chips">
+            <span class="chip">tests written with the code</span>
+            <span class="chip">explicit definition of done</span>
+          </div>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- 4 -->
+    <div class="row">
+      <div class="rail"><span class="num">4</span></div>
+      <div class="card-wrap"><div class="card">
+        <div class="cmd">/implement</div>
+        <div>
+          <div class="what">Chains the tasks on a dedicated branch</div>
+          <div class="chips">
+            <span class="chip">T-00 database backup</span>
+            <span class="chip">lint · typecheck · scoped tests</span>
+            <span class="chip">1 commit per task</span>
+            <span class="chip">gap → amend the spec</span>
+          </div>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- 5 -->
+    <div class="row">
+      <div class="rail"><span class="num">5</span></div>
+      <div class="card-wrap"><div class="card">
+        <div class="cmd">/review</div>
+        <div>
+          <div class="what">Spec ↔ code compliance</div>
+          <div class="chips">
+            <span class="chip">3 read-only review agents in parallel</span>
+            <span class="chip">verdict with file:line</span>
+          </div>
+        </div>
+      </div></div>
+    </div>
+    <div class="row">
+      <div class="rail end"><span class="diamond"></span></div>
+      <div class="gate">Human decides the merge</div>
+    </div>
+  </div>
+
+  <div class="boxes">
+    <div class="box ci">
+      <h2>Guardrails in CI</h2>
+      Every incident becomes a rule, then an automated check. The pipeline remembers, not the AI.
+    </div>
+    <div class="box retro">
+      <h2>Retrospective each session</h2>
+      Self-critique + "rapport d'étonnement". Each finding becomes an action with an owner and a trigger.
+    </div>
+  </div>
+  <p class="loop">↻ Both feed back into the rulebook and the skills themselves</p>
+
+  <footer>
+    <span><b>SDD kit for Claude Code</b> · MIT licence</span>
+    <span>Jean-Luc Rominger</span>
+  </footer>
+</div>
+<script>
+  // Exposes the content height for the render check (see README.md in this folder).
+  document.fonts.ready.then(() => {
+    const c = document.querySelector('.canvas');
+    const f = document.querySelector('footer');
+    const last = document.querySelector('.loop');
+    document.body.dataset.fits = String(f.getBoundingClientRect().top - last.getBoundingClientRect().bottom >= 20);
+    document.body.dataset.height = String(c.scrollHeight);
+  });
+</script>
+</body>
+</html>
