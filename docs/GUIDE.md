@@ -18,14 +18,16 @@ This guide explains how to run the kit day to day, why each rule exists, and how
 
 ## 2. Setup (10 minutes)
 
-1. Copy the kit into the root of your repository.
-2. Rename `.claude/settings.example.json` to `.claude/settings.json` and adjust the allowed commands to your stack.
-3. Fill in the `<placeholders>` in `CLAUDE.md`: product context, stack, project commands, checklist.
-4. Read `docs/constitution.md` and replace principle 8 with one of your own. Remove any principle you do not intend to enforce.
-5. Write your first ADR (your main stack choice) in `docs/architecture-decisions.md`.
-6. In `.claude/commands/implement.md`, replace `<your commands here>` with your lint, typecheck and scoped test commands.
+1. Install the kit, in one of two ways:
+   - **As a plugin** (recommended): run `/plugin install sdd-kit --marketplace BretzelCoder/sdd-kit` in Claude Code (2.1.275 or later; on older versions, `/plugin marketplace add BretzelCoder/sdd-kit` then `/plugin install sdd-kit@bretzelcoder`). Then run `/sdd-kit:init` in your project: it copies the rulebook, the docs and the spec templates, without overwriting anything. The plugin updates with each kit release.
+   - **By copying**: copy the kit into the root of your repository, then rename `.claude/settings.example.json` to `.claude/settings.json`.
 
-The commands are standard Claude Code slash commands: each `.md` file in `.claude/commands/` becomes `/name`, and `$ARGUMENTS` receives what you type after it.
+   Either way, adjust the allowed commands in `.claude/settings.json` to your stack.
+2. Fill in the `<placeholders>` in `CLAUDE.md`: product context, stack, project commands, checklist. `/implement` runs the lint, typecheck and scoped test commands you list under "Project commands".
+3. Read `docs/constitution.md` and replace principle 8 with one of your own. Remove any principle you do not intend to enforce.
+4. Write your first ADR (your main stack choice) in `docs/architecture-decisions.md`.
+
+The commands are standard Claude Code slash commands: each `.md` file in `.claude/commands/` becomes `/name`, and `$ARGUMENTS` receives what you type after it. With the plugin, they carry its prefix: `/sdd-kit:specify`, `/sdd-kit:plan`, and so on. This guide writes them without the prefix.
 
 ## 3. Running one feature
 

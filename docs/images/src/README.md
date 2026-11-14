@@ -5,6 +5,7 @@
 | `workflow.html` | `../workflow.png` | 1620 × 2025 px (4:5) |
 | `evolution.html` | `../evolution.png` | 1620 × 2025 px (4:5) |
 | `social-preview.html` | `../social-preview.png` | 1280 × 640 px (2:1) |
+| `icon.html` | `../../../.claude-plugin/icon.png` | 512 × 512 px, the plugin's listing icon |
 
 No upstream project name, spec number or action number in these images (see `MAINTAINING.md`, section 3).
 
@@ -18,6 +19,7 @@ No upstream project name, spec number or action number in these images (see `MAI
    ```bash
    NAME=workflow; SIZE=1620,2025          # or: NAME=evolution; SIZE=1620,2025
                                           # or: NAME=social-preview; SIZE=1280,640
+                                          # or: NAME=icon; SIZE=512,512, and OUT=.claude-plugin/icon.png
 
    # Windows (Git Bash)
    CHROME="/c/Program Files/Google/Chrome/Application/chrome.exe"

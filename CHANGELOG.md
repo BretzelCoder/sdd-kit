@@ -4,6 +4,18 @@ This kit is extracted from the workflow used on a real production project betwee
 
 ![How the workflow evolved from July to November 2026](docs/images/evolution.png)
 
+## 1.2.0 — 2026-11
+### Added
+- **Claude Code plugin**: `/plugin install sdd-kit --marketplace BretzelCoder/sdd-kit`. The repository is its own marketplace (`.claude-plugin/`). With the plugin, the commands run as `/sdd-kit:specify`, `/sdd-kit:plan`, and so on.
+- **`/sdd-kit:init`** (plugin only): copies the rulebook, the docs and the spec templates into the project without overwriting anything, then lists what remains to fill in.
+- **Contributing**: `CONTRIBUTING.md`, issue forms (experience report, problem with a command, port to another agent, rule proposal), a pull request template, and Discussions for questions.
+- **`Kit checks` workflow**: fails if the plugin's copy of the review agent differs from the kit's, or if the plugin version differs from the latest CHANGELOG entry.
+- Plugin icon, with its source in `docs/images/src/`.
+
+### Changed
+- `/implement` runs the commands listed under "Project commands" in `CLAUDE.md`, instead of a placeholder inside the command. That removes a setup step, and the command works unchanged when installed as a plugin.
+- `/review` gives the plugin's name for the review agent (`sdd-kit:review-axis`).
+
 ## 1.1.2 — 2026-11
 ### Added
 - Repository social preview (`docs/images/social-preview.png`, 1280 × 640 px), with its source in `docs/images/src/`.
